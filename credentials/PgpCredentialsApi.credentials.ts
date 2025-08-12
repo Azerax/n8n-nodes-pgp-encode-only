@@ -48,9 +48,24 @@ export class PgpCredentialsApi implements ICredentialType {
 								keyMethod: [
 									'manual'
 								]
-							}
+							},
 						}
         },
+				{
+					displayName: 'Public Key',
+					name: 'publicKeyFile',
+					// eslint-disable-next-line n8n-nodes-base/cred-class-field-type-options-password-missing
+					type: 'string',
+					default: '',
+					description: 'Point to where you\'re public key is stored',
+					displayOptions: {
+						show: {
+								keyMethod: [
+									'server'
+								]
+							},
+					},
+				},
         {
             displayName: 'Private Key',
             name: 'private_key',
@@ -66,27 +81,12 @@ export class PgpCredentialsApi implements ICredentialType {
 								keyMethod: [
 									'manual'
 								]
-							}
-						}
+							},
+						},
         },
 				{
-					displayName: 'Public Key',
-					name: 'publicKeyFile',
-					// eslint-disable-next-line n8n-nodes-base/cred-class-field-type-options-password-missing
-					type: 'string',
-					default: '',
-					description: 'Point to where you\'re public key is stored',
-					displayOptions: {
-						show: {
-								keyMethod: [
-									'server'
-								]
-							}
-					},
-				},
-				{
 					displayName: 'Private Key',
-					name: 'privateKeyFile',
+					name: 'privateURL',
 					// eslint-disable-next-line n8n-nodes-base/cred-class-field-type-options-password-missing
 					type: 'string',
 					default: '',
@@ -96,7 +96,7 @@ export class PgpCredentialsApi implements ICredentialType {
 								keyMethod: [
 									'server'
 								]
-							}
+							},
 					},
 				},
     ];

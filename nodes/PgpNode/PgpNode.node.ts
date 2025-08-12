@@ -190,15 +190,14 @@ export class PgpNode implements INodeType {
         credentials = await this.getCredentials('pgpCredentialsApi');
 
         try {
-						if(credentials.keyMehtod === 'server') {
-							let privateKeyURL = credentials.privateKeyFile as string;
+						if(credentials.keyMethod === 'server') {
+							let privateUrl = credentials.privateURL as string;
 
-							if(privateKeyURL !== '') {
-								let response = await this.helpers.request({
+							if(privateUrl !== '') {
+								credentials.private_key = await this.helpers.request({
 									method: 'GET',
-									url: privateKeyURL,
+									url: privateUrl,
 								});
-								credentials.private_key = response
 							}
 						}
 
@@ -218,17 +217,15 @@ export class PgpNode implements INodeType {
             throw new NodeOperationError(this.getNode(), 'private key is not valid');
         }
 
-				let response = 'Empty';
         try {
-					if(credentials.keyMehtod === 'server') {
-							let publicKeyURL = credentials.publicKeyFile as string;
+					if(credentials.keyMethod === 'server') {
+							let publicUrl = credentials.publicKeyFile as string;
 
-							if(publicKeyURL !== '') {
-								response = await this.helpers.request({
+							if(publicUrl !== '') {
+								credentials.public_key = await this.helpers.request({
 									method: 'GET',
-									url: publicKeyURL,
+									url: publicUrl,
 								});
-								credentials.public_key = response
 							}
 						}
             pubKey = await openpgp.readKey({
