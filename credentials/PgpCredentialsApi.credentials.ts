@@ -34,12 +34,14 @@ export class PgpCredentialsApi implements ICredentialType {
 					default: 'manual',
 				},
         {
-            displayName: 'Public Key',
+            displayName: 'Encryption Key',
             name: 'public_key',
             type: 'string',
-            // eslint-disable-next-line n8n-nodes-base/cred-class-field-type-options-password-missing
+						description: 'A plain text version of a key',
+						hint: 'The key to use to encrypt the message. Typically the recipient\'s Public Key',
             typeOptions: {
                 rows: 5,
+								password: true,
             },
             default: '',
             required: false,
@@ -52,12 +54,15 @@ export class PgpCredentialsApi implements ICredentialType {
 						}
         },
 				{
-					displayName: 'Public Key',
+					displayName: 'Encryption Key',
 					name: 'publicKeyFile',
-					// eslint-disable-next-line n8n-nodes-base/cred-class-field-type-options-password-missing
 					type: 'string',
 					default: '',
-					description: 'Point to where you\'re public key is stored',
+					description: 'The url where the key is stored',
+					hint: 'The key to use to encrypt the message. Typically the recipient\'s Public Key',
+					typeOptions: {
+						password: true,
+					},
 					displayOptions: {
 						show: {
 								keyMethod: [
@@ -67,12 +72,14 @@ export class PgpCredentialsApi implements ICredentialType {
 					},
 				},
         {
-            displayName: 'Private Key',
+            displayName: 'Decryption Key',
             name: 'private_key',
             type: 'string',
-            // eslint-disable-next-line n8n-nodes-base/cred-class-field-type-options-password-missing
+						description: 'A plain text version of a key',
+						hint: 'The key to use to decrypt the message. Typically the sender\'s Private Key',
             typeOptions: {
                 rows: 5,
+								password: true,
             },
             default: '',
             required: false,
@@ -85,12 +92,15 @@ export class PgpCredentialsApi implements ICredentialType {
 						},
         },
 				{
-					displayName: 'Private Key',
+					displayName: 'Decryption Key',
 					name: 'privateURL',
-					// eslint-disable-next-line n8n-nodes-base/cred-class-field-type-options-password-missing
 					type: 'string',
 					default: '',
-					description: 'Point to where you\'re private key is stored',
+					description: 'The url where the key is stored',
+					hint: 'The key to use to decrypt the message. Typically the sender\'s Private Key',
+					typeOptions: {
+								password: true,
+            },
 					displayOptions: {
 						show: {
 								keyMethod: [

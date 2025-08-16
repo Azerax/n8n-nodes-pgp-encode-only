@@ -1,7 +1,7 @@
 {
-  "name": "@hapheus/n8n-nodes-pgp",
-  "version": "1.3.0",
-  "description": "n8n-nodes-pgp enables seamless integration of PGP encryption functionalities into n8n workflows. Create keys, encrypt, decrypt, sign, and verify messages effortlessly. Perfect for secure data handling in automated workflows.",
+  "name": "@xzcutable/n8n-nodes-pgp",
+  "version": "2.0.0",
+  "description": "An imporved version of hapheus' original n8n-nodes-pgp. Enables seamless integration of PGP encryption functionalities into n8n workflows. Create keys, encrypt, decrypt, sign, and verify messages effortlessly. Perfect for secure data handling in automated workflows.",
   "keywords": [
     "n8n-community-node-package",
     "n8n-nodes",
@@ -21,6 +21,10 @@
   "license": "MIT",
   "homepage": "",
   "author": {
+    "name": "XZcutable",
+    "email": "dle71ez9e@mozmail.com"
+  },
+  "original-author": {
     "name": "Franz Haberfellner",
     "email": "haf68k@gmail.com"
   },
