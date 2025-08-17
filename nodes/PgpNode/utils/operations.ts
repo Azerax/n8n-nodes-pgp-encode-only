@@ -1,5 +1,6 @@
 import * as openpgp from 'openpgp';
 import { Key, PrivateKey } from 'openpgp';
+import { KeyOptions, SerializedKeyPair } from 'openpgp';
 
 export async function encryptText(
     message: string,
@@ -143,4 +144,21 @@ export async function verifyBinary(binaryData: Uint8Array, signature: string, pu
     } catch {
         return false;
     }
+}
+
+export async function createPGPKeyPair(
+    config: KeyOptions & { format: 'armored' | 'binary' },
+): Promise<SerializedKeyPair<string | Uint8Array> | false> {
+    try {
+        let keys: Promise<SerializedKeyPair<string | Uint8Array>>;
+        if (config.format === 'armored') {
+            keys = openpgp.generateKey(config as KeyOptions & { format: 'armored' });
+        } else if (config.format === 'binary') {
+            keys = openpgp.generateKey(config as KeyOptions & { format: 'binary' });
+        } else {
+					return false;
+				}
+				return await keys;
+    } catch {}
+    return false;
 }

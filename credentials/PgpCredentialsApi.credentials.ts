@@ -34,11 +34,11 @@ export class PgpCredentialsApi implements ICredentialType {
 					default: 'manual',
 				},
         {
-            displayName: 'Encryption Key',
+            displayName: 'Public Key',
             name: 'public_key',
             type: 'string',
-						description: 'A plain text version of a key',
-						hint: 'The key to use to encrypt the message. Typically the recipient\'s Public Key',
+						description: 'A plaintext version of a pgp key',
+						hint: 'The key to use to encrypt the message.',
             typeOptions: {
                 rows: 5,
 								password: true,
@@ -54,12 +54,12 @@ export class PgpCredentialsApi implements ICredentialType {
 						}
         },
 				{
-					displayName: 'Encryption Key',
+					displayName: 'Public Key',
 					name: 'publicKeyFile',
 					type: 'string',
 					default: '',
 					description: 'The url where the key is stored',
-					hint: 'The key to use to encrypt the message. Typically the recipient\'s Public Key',
+					hint: 'The key to use to encrypt the message.',
 					typeOptions: {
 						password: true,
 					},
@@ -72,11 +72,11 @@ export class PgpCredentialsApi implements ICredentialType {
 					},
 				},
         {
-            displayName: 'Decryption Key',
+            displayName: 'Private Key',
             name: 'private_key',
             type: 'string',
-						description: 'A plain text version of a key',
-						hint: 'The key to use to decrypt the message. Typically the sender\'s Private Key',
+						description: 'A plain text version of a pgp key',
+						hint: 'The key to use to decrypt the message.',
             typeOptions: {
                 rows: 5,
 								password: true,
@@ -92,12 +92,12 @@ export class PgpCredentialsApi implements ICredentialType {
 						},
         },
 				{
-					displayName: 'Decryption Key',
+					displayName: 'Private Key',
 					name: 'privateURL',
 					type: 'string',
 					default: '',
 					description: 'The url where the key is stored',
-					hint: 'The key to use to decrypt the message. Typically the sender\'s Private Key',
+					hint: 'The key to use to decrypt the message.',
 					typeOptions: {
 								password: true,
             },
