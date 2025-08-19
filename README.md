@@ -2,7 +2,7 @@
 
 # n8n-nodes-pgp
 
-This is an n8n community node branched from [haoheus](https://github.com/hapheus/n8n-nodes-pgp). It intergrates OpenPGP encryption and decryption into your n8n workflows.
+This is an n8n community node branched from [hapheus](https://github.com/hapheus/n8n-nodes-pgp). It intergrates OpenPGP encryption and decryption into your n8n workflows.
 
 [OpenPGP](https://www.openpgp.org/) is a standard for encryption and signing of data.
 
