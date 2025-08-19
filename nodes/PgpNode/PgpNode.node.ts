@@ -286,6 +286,17 @@ export class PgpNode implements INodeType {
                 default: {},
                 options: [
                     {
+                        displayName: 'Binary Property Name (Signature)',
+                        name: 'binaryPropertyNameSignature',
+                        type: 'string',
+                        default: 'signature',
+                        displayOptions: {
+                            hide: {
+                                '/inputType': ['text'],
+                            },
+                        },
+                    },
+                    {
                         displayName: 'Dettached Signature',
                         name: 'dettachedSignature',
                         type: 'string',
@@ -297,10 +308,32 @@ export class PgpNode implements INodeType {
                         },
                     },
                     {
-                        displayName: 'Binary Property Name (Signature)',
-                        name: 'binaryPropertyNameSignature',
+                        displayName: 'File Extension',
+                        name: 'fileExt',
                         type: 'string',
-                        default: 'signature',
+                        default: 'pgp',
+                        displayOptions: {
+                            hide: {
+                                '/inputType': ['text'],
+                            },
+                        },
+                    },
+                    {
+                        displayName: 'File Name',
+                        name: 'fileName',
+                        type: 'string',
+                        default: '',
+                        displayOptions: {
+                            hide: {
+                                '/inputType': ['text'],
+                            },
+                        },
+                    },
+                    {
+                        displayName: 'Mime Type',
+                        name: 'mimeType',
+                        type: 'string',
+                        default: 'application/octet-stream',
                         displayOptions: {
                             hide: {
                                 '/inputType': ['text'],
@@ -344,6 +377,10 @@ export class PgpNode implements INodeType {
         let signMessage: boolean;
         let validateSignature: boolean;
         let dettachSignature: boolean;
+
+        let mimeType: string;
+        let fileExt: string;
+        let fileName: string;
 
         operation = this.getNodeParameter('operation', 0) as string;
         if (operation === 'create') {
@@ -639,6 +676,23 @@ export class PgpNode implements INodeType {
                                         '',
                                     ) as string
                                 ).trim();
+                                mimeType = (
+                                    this.getNodeParameter(
+                                        'decryptionOptions[mimeType]',
+                                        itemIndex,
+                                        'application/octet-stream',
+                                    ) as string
+                                ).trim();
+                                fileName = (
+                                    this.getNodeParameter(
+                                        'decryptionOptions[fileName]',
+                                        itemIndex,
+                                        item.binary[binaryPropertyName].fileName,
+                                    ) as string
+                                ).trim();
+                                fileExt = (
+                                    this.getNodeParameter('decryptionOptions[fileExt]', itemIndex, 'pgp') as string
+                                ).trim();
 
                                 const binaryDataDecrypt = Buffer.from(
                                     item.binary[binaryPropertyName].data,
@@ -697,9 +751,9 @@ export class PgpNode implements INodeType {
                                 }
                                 item.binary = {
                                     decrypted: {
-                                        data: Buffer.from(decryptedMessage.data).toString('utf-8'),
-                                        mimeType: 'application/octet-stream',
-                                        fileName: `${item.binary[binaryPropertyName].fileName}.pgp`,
+                                        data: Buffer.from(decryptedMessage.data).toString('binary'),
+                                        mimeType: mimeType,
+                                        fileName: `${fileName}.${fileExt}`,
                                     },
                                 };
                             }
