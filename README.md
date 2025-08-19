@@ -17,9 +17,9 @@ This is an n8n community node branched from [hapheus](https://github.com/hapheus
 * [Installation](#installation)
 
 ## Changes
-* This version of the node simplfies and streamlines encyption and decyption. Before, signing was a separate file/output, but is now baked into the encryption. Added support if you'd still like to dettach the signing key.
-* Removed singing and verify only options. Now there is just encypt and decrypt.
-* Added support for key generation.
+* This version of the node simplfies and streamlines encyption and decyption. Before, signing was a separate file/output, since he has added support to bake into the encryption, but here it is by default with added support for dettached signing keys.
+* Removed singing, X-encrypt/decrypt-verify, and verify only options. Now there is just encypt, decrypt, and create.
+* Added support for key generation: create.
 * Added support for remotely hosted public and private keys. Also changed pgp to be treated like passwords in credentials.
 * Added partial credential support (i.e. only filling in a public or private key). Will let user know if a key is missing only if the operation they are performing needs that key.
 
