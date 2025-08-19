@@ -82,3 +82,9 @@ To authenticate with this node, you need to provide the following credentials:
 ## Installation
 
 Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
+
+
+## Versioning X.Y.Z
+X - The main version, this probably wont change unless major, potentially breaking changes are made.
+Y - When features are added or removed. This will typically only be additive.
+Z - Small fixes, such as typos. Shouldn't break anything, unless the variable itself was mispelled. But this will typically be documentaion.
