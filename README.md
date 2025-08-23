@@ -36,7 +36,7 @@ To authenticate with this node, you need to provide the following credentials:
 - Private Key: Armored private key for decryption and signing or a url pointed to where the file can be obtained.
 
 # Notes when creating credentials
-* You can create partial credentials (feel in only private or public key), but will receive an error if you try to perform an operation that requires a certain key. The error will tell you which one.
+* You can create partial credentials (fill in only private or public key), but will receive an error if you try to perform an operation that requires a certain key. The error will tell you which one.
 * If you are familiar with PGP encryption, then you probably already know this. When creating credentials, you can use your own Public and Private key, if you will only be sending and encrypting messages to yourself. If, however, you'd like to send a message to someone, you will need their public key to encrypt message. You would also need their public key if you want to verify the message you received was from them (or at least verify they have access to the private key for the public key you have). That's why credentials are as felxible as they are so that you could potential create multiple credentials depending how you will use it. PGP assumes both parties keep their private key private, and both have access to the public key. Signing will use the credentials private key, and verifying will use the credentials public key.
 
 ## Resources
